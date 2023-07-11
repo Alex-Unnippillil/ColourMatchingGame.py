@@ -1,10 +1,10 @@
 import tkinter as tk
 import random
 
-# Function to handle color selection
-def select_color(color):
+# Function to handle Colour selection
+def select_Colour(Colour):
     global score, high_score
-    if color == word_colors[selected_word]:
+    if Colour == word_Colours[selected_word]:
         result_label.config(text="Correct!")
         score += 1
         if score > high_score:
@@ -22,9 +22,9 @@ def start_game():
     global selected_word
     selected_word = random.randint(0, len(words) - 1)
     result_label.config(text="")
-    word_label.config(text=words[selected_word], fg=word_colors[selected_word])
-    for button, color in zip(color_buttons, colors):
-        button.config(bg=color)
+    word_label.config(text=words[selected_word], fg=word_Colours[selected_word])
+    for button, Colour in zip(Colour_buttons, Colours):
+        button.config(bg=Colour)
 
 # Function to save the high score
 def save_high_score():
@@ -47,20 +47,20 @@ window.title("Colour Matching Game")
 window.geometry("500x500")  # Set the window size
 
 # Create a title label
-title_label = tk.Label(window, text="Color Matching Game", font=("Helvetica", 20))
+title_label = tk.Label(window, text="Colour Matching Game", font=("Helvetica", 20))
 title_label.pack(pady=20)
 
-# Create a frame for color selection
-color_frame = tk.Frame(window, width=300, height=200, bd=2, relief=tk.SOLID)
-color_frame.pack()
+# Create a frame for Colour selection
+Colour_frame = tk.Frame(window, width=300, height=200, bd=2, relief=tk.SOLID)
+Colour_frame.pack()
 
-# Create color buttons
-colors = ["Red", "Green", "Blue", "Yellow"]
-color_buttons = []
-for i, color in enumerate(colors):
-    button = tk.Button(color_frame, width=10, height=5, bg=color, command=lambda color=color: select_color(color))
+# Create Colour buttons
+Colours = ["Red", "Green", "Blue", "Yellow"]
+Colour_buttons = []
+for i, Colour in enumerate(Colours):
+    button = tk.Button(Colour_frame, width=10, height=5, bg=Colour, command=lambda Colour=Colour: select_Colour(Colour))
     button.grid(row=i // 2, column=i % 2, padx=5, pady=5)
-    color_buttons.append(button)
+    Colour_buttons.append(button)
 
 # Create a label for the displayed word
 word_label = tk.Label(window, text="", font=("Helvetica", 16))
@@ -81,9 +81,9 @@ high_score = load_high_score()
 high_score_label = tk.Label(window, text=f"High Score: {high_score}", font=("Helvetica", 16))
 high_score_label.pack(pady=10)
 
-# List of words and corresponding colors
+# List of words and corresponding Colours
 words = ["Red", "Green", "Blue", "Yellow"]
-word_colors = ["Red", "Green", "Blue", "Yellow"]
+word_Colours = ["Red", "Green", "Blue", "Yellow"]
 
 # Variable to store the index of the selected word
 selected_word = -1
